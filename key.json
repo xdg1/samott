@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "samott",
+  "private_key_id": "fe70810d457a7f3faa7346c97561e5ffa4a5b239",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCq9CzIeQeKth9O\ncfpPPIVoai3DI2rJCRKwQB92YDH89+/asusM9HQ3fQO7vmJZZ7gNmHeNFFzOWaxZ\n9yfTbJ6sC8oj9hQSMiFvxiyk85hL89NgTQ0zN5+EY+L7neWaocbPyoDGWIzj+GDr\n+VzR3ZceCRqTjk6xkJOxj4EUGG/pdsCOkgS9o1InP1hpkDf3WSK+gTxsYVwozCyI\nNBD5rqVLKdiAppSnqkR8hBzG1wGPlnd/dyEJNgEe3RZY5k1VW1O/iP2vRAL6ITbm\n0lZ+mYDVAh2dkqeKZeXmIwqy4wXF6QuYCVuk3WsXcStsdS1EZ8tIZsIr/9r+wZx0\nyKyNFfgNAgMBAAECggEADtlTtHwSxCEqmfk7eTt0CQxD+lGuulSP64A+W11iqirt\nCg2FbiQjnhg9RUb1qvdf3Mp0A+yTXRcb6dqWen5ST/ZcMgBzYNs63UcU5KUGAv7k\nStaWgW7g67JzalCeO2624qCfy9qwLjMKVCTeQ5pgQGshBFUVj8XTllY1K4Yt3lTe\nGrYPy6dYCBDTjprql1CymDLU312IJ0rNIpkBr2+hnpP0IWcUjvauuFGFJQKuEPFh\npI/MaLcbTleR3wPcsUWF44JMGpuAah3Mta2CnzLxg5Zx4DCyOjjqh5epOaD9KzOl\nu9/VhAlBZzSYIfypOv9EvJZgPJEMDODx2mohl0hGvwKBgQDvjrwOApG8fxVYHIst\nHS8uvlvAqt11AQ4Vdt4JvH/slv2UnkLq05hvDifI8Mm5sl0IgDwj9WNi7MV00ATq\nB9T/fUjBXgywwHZ88kIeO5HLlbJDEmjMTH9/5u9hYQgTKisWcBfqCDaqVqa2pUJP\niGuWIz6v/fmjMPpqvrZSENRVQwKBgQC2sAEGDmrBMX2kfqWaqRZIPJ0mNhuohJaQ\nP3KpkOe1hh5tVP1VJSozMlAekOqJbVCz1A964mu+qtijjflksOEkS5i7/ticPjMK\n7WztGumij24wRo5qkcmsPe2r6kD/PJz5Vl+EMOM4RDhUJc4wEec3yE7SY+6rkE1m\nq+LoiBcAbwKBgQDaC81X4zbLn9DJtpFnqty7a0EQiXWxfhhXqS5JJm455uVBVRwL\nqjVhQD0uRR0YDSVpC2+yOzUPYfwIax9N9XsGYf7LItPiPgybhdZwtj/qUoNDUYpa\nCncy7/yLYkp7RzKY5caemoNHYD+2l41X3xAuRD5W6pFC3N3SM2y4HeFnCQKBgE9l\nGmzJYzfnDFWq/MnEZnyqaxmqNkb8qHq0OF7dLPZE/YBCiX6xki+B1DQUgvmK2qHs\nrXWYZX8NvO0HzLUn8hDWEeDSFs2AcqpzGP3KznLpptewMkC6b0099MbcHbdPXmE2\nWniWzokrjNd1PrDBdx1VHnxtFdLV+e1/EjRAwM5dAoGBAKP0SRUCCyE6Fj3X5snt\n4wPwCfbY8VZv1WKle0AnGb4sjVPBHlkgQqtVK9IhTVfIbzkfVjlUIuIyOsv17cg2\nYaWQ+MznCKhLZ/lYMx004x4F41OMTx9+SKOyl/DJl4D6DTSL9KuXnXZHzsFA2rAk\nx2HQFAX2VmHMGyUeTwSR4LOt\n-----END PRIVATE KEY-----\n",
+  "client_email": "samott-szdg@samott.iam.gserviceaccount.com",
+  "client_id": "102015617051232711039",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/samott-szdg%40samott.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
