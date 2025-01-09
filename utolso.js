@@ -142,54 +142,74 @@ const app = async () => {
     }));
 
     // fajl ellenorzes
-    const fileName = `samott.xlsx`;
-    let ws;
-    let wb;
-
-    if (fs.existsSync(fileName)) {
-        //ha letezik, hozzafuzzuk
-        wb = xlsx.readFile(fileName);
-        const existingSheet = wb.Sheets[wb.SheetNames[0]];
-        const existingData = xlsx.utils.sheet_to_json(existingSheet);
-        
-        // Merge w prev
-        const updatedData = existingData.concat(sheetData);
-        ws = xlsx.utils.json_to_sheet(updatedData, { header: ['név', date] });
-    } else {
-        // ha nincs, create
-        ws = xlsx.utils.json_to_sheet(sheetData, { header: ['név', date] });
-        wb = xlsx.utils.book_new();
-    }
-
-    // col width)
-    const columnsCount = Object.keys(sheetData[0]).length; // column count
-
-    // column w dinamically
-    let colWidths = [{ wch: 20 }];  
+        let wb, ws, existingData;
+        const fileName = 'samott.xlsx';
     
-    // tobbire wider
-    for (let i = 1; i < columnsCount; i++) {
-        colWidths.push({ wch: 30 });  
-    }
-
-    // Apply the column widths to the sheet
-    ws['!cols'] = colWidths;
-    let sheetname = 'Sheet1';
-
-    let counter = 1;
-    while(wb.SheetNames.includes(sheetname)) {
-        sheetname = `Sheet${counter}`;
-        counter++;
-    }
-
-    // sheet append and xlsx create
-    xlsx.utils.book_append_sheet(wb, ws, sheetname);
-    xlsx.writeFile(wb, fileName);
-
-    console.log(`Results saved to ${fileName}`);
+        if (fs.existsSync(fileName)) {
+            // If the file exists, read it
+            wb = xlsx.readFile(fileName);
+            ws = wb.Sheets["Sheet1"];
+            existingData = xlsx.utils.sheet_to_json(ws, { defval: "" });
+        } else {
+            // If the file doesn't exist, initialize an empty workbook and data array
+            wb = xlsx.utils.book_new();
+            existingData = [];
+        }
+    
+        // Extract headers from existing data, or create a new header row
+        const headers = existingData.length > 0 ? Object.keys(existingData[0]) : ["név"];
+    
+        // Add the current date as a new column if it doesn't exist
+        if (!headers.includes(date)) {
+            headers.push(date);
+        }
+    
+        // Ensure all names are in the sheet
+        results.forEach(product => {
+            const existingRow = existingData.find(row => row["név"] === product.name);
+            if (!existingRow) {
+                // Add a new row for this product if it doesn't already exist
+                const newRow = { "név": product.name };
+                headers.forEach(header => {
+                    if (!newRow[header]) {
+                        newRow[header] = ""; // Initialize other columns with empty strings
+                    }
+                });
+                existingData.push(newRow);
+            }
+        });
+    
+        // Update availability for each product
+        results.forEach(product => {
+            const row = existingData.find(row => row["név"] === product.name);
+            if (row) {
+                row[date] = product.availability; // Add availability under the current date column
+            }
+        });
+    
+        // Convert the updated data back into a sheet
+        ws = xlsx.utils.json_to_sheet(existingData, { header: headers });
+    
+        // Dynamically adjust column widths
+        const colWidths = headers.map(() => ({ wch: 20 })); // Adjust widths as needed
+        ws["!cols"] = colWidths;
+    
+        // Remove the existing sheet if it exists
+        const sheetName = "Sheet1";
+        if (wb.SheetNames.includes(sheetName)) {
+            delete wb.Sheets[sheetName];
+            const index = wb.SheetNames.indexOf(sheetName);
+            wb.SheetNames.splice(index, 1);
+        }
+    
+        // Append the new sheet with the same name
+        xlsx.utils.book_append_sheet(wb, ws, sheetName);
+        xlsx.writeFile(wb, fileName);
+    
+        console.log(`Results saved to ${fileName}`);
 
     // email
-    const transporter = nodeMailer.createTransport({
+   /* const transporter = nodeMailer.createTransport({
         host: 'smtp.gmail.com',
         port: 465,
         secure: true,
@@ -211,7 +231,7 @@ const app = async () => {
     });
 
     console.log('Message sent!');
-
+*/
     await browser.close();
 
     setTimeout(app, 24 * 60 * 60 * 1000);
