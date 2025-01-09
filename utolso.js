@@ -209,7 +209,11 @@ const app = async () => {
         console.log(`Results saved to ${fileName}`);
 
     // email
-   /* const transporter = nodeMailer.createTransport({
+    const emails = ['Dozsa.miklos01@gmail.com', 
+        'szilagyidavidg3@gmail.com'
+    ];
+
+    const transporter = nodeMailer.createTransport({
         host: 'smtp.gmail.com',
         port: 465,
         secure: true,
@@ -221,7 +225,7 @@ const app = async () => {
 
     const info = await transporter.sendMail({
         from: 'szdgwebwork <szdgwebwork@gmail.com>',
-        to: 'Dozsa.miklos01@gmail.com',
+        to: emails,
         subject: `Napi samott: ${date}`,
         text: 'Jó napot! Itt a napi jelentés!',
         attachments: [{
@@ -231,7 +235,7 @@ const app = async () => {
     });
 
     console.log('Message sent!');
-*/
+
     await browser.close();
 
     setTimeout(app, 24 * 60 * 60 * 1000);
