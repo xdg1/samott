@@ -4,7 +4,9 @@ const xlsx = require('xlsx');
 const nodeMailer = require('nodemailer');
 
 const app = async () => {
-    const browser = await puppeteer.launch({ headless: true, 
+    const browser = await puppeteer.launch({ 
+        executablePath: 'usr/bin/google-chrome',
+        headless: true, 
         args: ['--no-sandbox', '--disable-setuid-sandbox']
      });
     const page = await browser.newPage();
